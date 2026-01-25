@@ -1,0 +1,293 @@
+.weights-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.weights-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.weights-nav {
+  margin-bottom: 40px;
+}
+
+.weights-question {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.weights-question h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1.3;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Massive button container */
+.weights-buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* Massive liquid glass buttons */
+.weight-choice-button {
+  position: relative;
+  width: 100%;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out backwards;
+}
+
+.weight-choice-button:first-child {
+  animation-delay: 0.1s;
+}
+
+.weight-choice-button:last-child {
+  animation-delay: 0.2s;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.weight-choice-button:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 136, 0.15) 0%,
+    rgba(0, 255, 136, 0.05) 50%,
+    rgba(0, 255, 136, 0.1) 100%
+  );
+  border-color: #00ff88;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25),
+              0 0 40px rgba(0, 255, 136, 0.2),
+              0 0 80px rgba(0, 255, 136, 0.1);
+}
+
+.weight-choice-button:active {
+  transform: translateY(-3px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Liquid morphing on hover */
+@keyframes liquidMorph {
+  0%, 100% {
+    border-radius: 24px;
+  }
+  25% {
+    border-radius: 28px 20px 26px 22px;
+  }
+  50% {
+    border-radius: 22px 26px 20px 28px;
+  }
+  75% {
+    border-radius: 26px 22px 28px 20px;
+  }
+}
+
+.weight-choice-button:hover {
+  animation: liquidMorph 3s ease-in-out infinite;
+}
+
+/* Button text */
+.weight-choice-text {
+  position: relative;
+  z-index: 2;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 4px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.weight-choice-button:hover .weight-choice-text {
+  color: #00ff88;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5),
+               0 0 40px rgba(0, 255, 136, 0.3);
+  transform: scale(1.05);
+}
+
+/* Glow effect */
+.weight-choice-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 136, 0.25) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.weight-choice-button:hover .weight-choice-glow {
+  width: 400px;
+  height: 400px;
+}
+
+/* Shine effect */
+.weight-choice-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.weight-choice-button:hover .weight-choice-shine {
+  left: 100%;
+}
+
+/* Background orbs */
+.weights-page .background-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.weights-page .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+.weights-page .orb-1 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  top: -100px;
+  right: -80px;
+  animation-delay: 0s;
+}
+
+.weights-page .orb-2 {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(135deg, #00ff88 0%, #00b4d8 100%);
+  bottom: 10%;
+  left: -100px;
+  animation-delay: -7s;
+}
+
+.weights-page .orb-3 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  top: 40%;
+  right: -50px;
+  animation-delay: -14s;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(-15px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(-25px, -15px) scale(1.02);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .weights-question h2 {
+    font-size: 1.6rem;
+  }
+
+  .weight-choice-button {
+    min-height: 120px;
+  }
+
+  .weight-choice-text {
+    font-size: 2rem;
+  }
+
+  .weights-content {
+    padding: 16px;
+  }
+}
+
+@media (max-height: 700px) {
+  .weight-choice-button {
+    min-height: 100px;
+  }
+
+  .weights-question {
+    margin-bottom: 30px;
+  }
+}
