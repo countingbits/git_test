@@ -1,0 +1,90 @@
+import GlassButton from '../components/GlassButton';
+import './WhatToImprove.css';
+
+const improvements = [
+  {
+    id: 'lose-weight',
+    text: 'I need to lose weight',
+    icon: '🔥',
+    description: 'Burn fat and get leaner'
+  },
+  {
+    id: 'gain-muscle',
+    text: 'I need to gain muscle',
+    icon: '💪',
+    description: 'Build strength and mass'
+  },
+  {
+    id: 'heart-health',
+    text: 'I need my heart to be healthy',
+    icon: '❤️',
+    description: 'Improve cardiovascular fitness'
+  },
+  {
+    id: 'breathe-better',
+    text: 'I need to breathe better',
+    icon: '🌬️',
+    description: 'Enhance lung capacity and endurance'
+  },
+  {
+    id: 'flexibility',
+    text: 'I need to be more flexible',
+    icon: '🧘',
+    description: 'Improve mobility and range of motion'
+  },
+  {
+    id: 'energy',
+    text: 'I need more energy',
+    icon: '⚡',
+    description: 'Boost daily vitality and stamina'
+  }
+];
+
+const WhatToImprove = ({ motivation, onSelect, onBack }) => {
+  return (
+    <div className="improve-page">
+      <div className="improve-content">
+        <button className="back-button" onClick={onBack}>
+          <span className="back-arrow">←</span>
+          <span>Back</span>
+        </button>
+
+        <div className="improve-header">
+          <div className="motivation-badge">
+            <span>{motivation?.icon}</span>
+            <span>{motivation?.text}</span>
+          </div>
+          <h1 className="improve-title">Let's get specific</h1>
+          <p className="improve-subtitle">What do you want to improve?</p>
+        </div>
+
+        <div className="improve-buttons">
+          {improvements.map((improvement, index) => (
+            <GlassButton
+              key={improvement.id}
+              onClick={() => onSelect(improvement)}
+              delay={index * 100}
+              icon={improvement.icon}
+            >
+              {improvement.text}
+            </GlassButton>
+          ))}
+        </div>
+
+        <div className="improve-footer">
+          <p>Don't worry, you can always change this later</p>
+        </div>
+      </div>
+
+      {/* Animated background elements */}
+      <div className="background-orbs">
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+        <div className="orb orb-4"></div>
+      </div>
+    </div>
+  );
+};
+
+export default WhatToImprove;
