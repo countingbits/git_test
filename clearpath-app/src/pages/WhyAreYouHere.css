@@ -1,22 +1,24 @@
 .why-page {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
 }
 
 .why-content {
+  flex: 1;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
+  gap: 32px;
   max-width: 500px;
   width: 100%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .why-header {
@@ -76,7 +78,7 @@
 .why-buttons {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
   align-items: center;
 }

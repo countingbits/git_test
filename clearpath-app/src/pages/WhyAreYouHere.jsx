@@ -1,4 +1,5 @@
 import GlassButton from '../components/GlassButton';
+import RailroadProgress from '../components/RailroadProgress';
 import './WhyAreYouHere.css';
 
 const motivations = [
@@ -31,6 +32,8 @@ const motivations = [
 const WhyAreYouHere = ({ onSelect }) => {
   return (
     <div className="why-page">
+      <RailroadProgress currentStep={1} totalSteps={5} />
+
       <div className="why-content">
         <div className="why-header">
           <h1 className="why-logo">clearpath.io</h1>
@@ -47,7 +50,7 @@ const WhyAreYouHere = ({ onSelect }) => {
             <GlassButton
               key={motivation.id}
               onClick={() => onSelect(motivation)}
-              delay={index * 100}
+              delay={index * 80}
             >
               {motivation.text}
             </GlassButton>

@@ -1,46 +1,25 @@
 /* ClearPath.io - Global App Styles */
 
-/* Page Transitions */
+/* Page Transitions - Subtle fade for same-page feel */
 .page-wrapper {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
-.page-exit-left {
-  transform: translateX(-30px);
-  opacity: 0;
-}
-
+.page-exit-left,
 .page-exit-right {
-  transform: translateX(30px);
   opacity: 0;
 }
 
-.page-enter-right {
-  animation: slideInFromRight 0.3s ease forwards;
-}
-
+.page-enter-right,
 .page-enter-left {
-  animation: slideInFromLeft 0.3s ease forwards;
+  animation: contentFadeIn 0.35s ease forwards;
 }
 
-@keyframes slideInFromRight {
+@keyframes contentFadeIn {
   from {
-    transform: translateX(30px);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
     opacity: 1;
   }
 }

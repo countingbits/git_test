@@ -105,44 +105,33 @@
   max-width: 380px;
 }
 
-/* Option button - liquid glass style */
+/* Option button - iOS glass style */
 .option-button {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 24px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.08) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  justify-content: center;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   overflow: hidden;
-  text-align: left;
+  text-align: center;
 }
 
 .option-button:hover:not(:disabled) {
-  transform: translateY(-3px) scale(1.02);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.12) 100%
-  );
-  border-color: rgba(0, 255, 136, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
-              0 0 20px rgba(0, 255, 136, 0.1);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .option-button:active:not(:disabled) {
-  transform: translateY(-1px) scale(0.98);
+  transform: translateY(0) scale(0.98);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .option-button:disabled {
@@ -150,18 +139,10 @@
   opacity: 0.7;
 }
 
-/* Selected state with neon green */
+/* Selected state */
 .option-button.option-selected {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 136, 0.2) 0%,
-    rgba(0, 255, 136, 0.08) 50%,
-    rgba(0, 255, 136, 0.12) 100%
-  );
-  border-color: #00ff88;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3),
-              0 0 40px rgba(0, 255, 136, 0.1),
-              inset 0 0 20px rgba(0, 255, 136, 0.05);
+  background: rgba(0, 255, 136, 0.12);
+  border-color: rgba(0, 255, 136, 0.4);
 }
 
 .option-icon {

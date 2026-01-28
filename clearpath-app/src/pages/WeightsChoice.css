@@ -57,7 +57,7 @@
   padding: 20px 0;
 }
 
-/* Massive liquid glass buttons */
+/* Massive liquid glass buttons - iOS style */
 .weight-choice-button {
   position: relative;
   width: 100%;
@@ -65,18 +65,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.08) 100%
-  );
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1),
+              inset 0 0.5px 0 rgba(255, 255, 255, 0.15);
   overflow: hidden;
   animation: slideUp 0.5s ease-out backwards;
 }
@@ -101,22 +98,16 @@
 }
 
 .weight-choice-button:hover {
-  transform: translateY(-6px) scale(1.02);
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 136, 0.15) 0%,
-    rgba(0, 255, 136, 0.05) 50%,
-    rgba(0, 255, 136, 0.1) 100%
-  );
-  border-color: #00ff88;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25),
-              0 0 40px rgba(0, 255, 136, 0.2),
-              0 0 80px rgba(0, 255, 136, 0.1);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15),
+              inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
 }
 
 .weight-choice-button:active {
-  transform: translateY(-3px) scale(0.98);
-  transition: all 0.1s ease;
+  transform: translateY(0) scale(0.98);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 
@@ -134,9 +125,7 @@
 
 .weight-choice-button:hover .weight-choice-text {
   color: #00ff88;
-  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5),
-               0 0 40px rgba(0, 255, 136, 0.3);
-  transform: scale(1.05);
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
 }
 
 /* Glow effect */

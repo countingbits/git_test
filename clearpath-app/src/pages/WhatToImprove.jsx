@@ -1,4 +1,6 @@
 import GlassButton from '../components/GlassButton';
+import RailroadProgress from '../components/RailroadProgress';
+import BackButton from '../components/BackButton';
 import './WhatToImprove.css';
 
 const improvements = [
@@ -31,11 +33,12 @@ const improvements = [
 const WhatToImprove = ({ motivation, onSelect, onBack }) => {
   return (
     <div className="improve-page">
+      <RailroadProgress currentStep={2} totalSteps={5} />
+
       <div className="improve-content">
-        <button className="back-button" onClick={onBack}>
-          <span className="back-arrow">←</span>
-          <span>Back</span>
-        </button>
+        <div className="improve-nav">
+          <BackButton onClick={onBack} />
+        </div>
 
         <div className="improve-header">
           <div className="motivation-badge">
@@ -50,7 +53,7 @@ const WhatToImprove = ({ motivation, onSelect, onBack }) => {
             <GlassButton
               key={improvement.id}
               onClick={() => onSelect(improvement)}
-              delay={index * 100}
+              delay={index * 80}
             >
               {improvement.text}
             </GlassButton>

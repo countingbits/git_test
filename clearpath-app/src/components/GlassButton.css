@@ -1,33 +1,27 @@
 .glass-button {
   position: relative;
-  padding: 20px 32px;
+  padding: 18px 28px;
   width: 100%;
   max-width: 400px;
   border: none;
-  border-radius: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-radius 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-  animation: fadeSlideUp 0.6s ease-out forwards;
+    0 2px 16px rgba(0, 0, 0, 0.08),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.15);
+  animation: fadeSlideUp 0.5s ease-out forwards;
   opacity: 0;
 }
 
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -42,14 +36,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
   pointer-events: none;
   transition: border-color 0.3s ease;
 }
 
 .glass-button:hover::before {
-  border-color: rgba(0, 255, 136, 0.3);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .glass-button-shine {
@@ -61,10 +55,10 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 50%,
     transparent 100%
   );
-  transition: left 0.6s ease;
+  transition: left 0.5s ease;
 }
 
 .glass-button:hover .glass-button-shine {
@@ -79,7 +73,7 @@
   height: 0;
   background: radial-gradient(
     circle,
-    rgba(0, 255, 136, 0.2) 0%,
+    rgba(255, 255, 255, 0.12) 0%,
     transparent 70%
   );
   transform: translate(-50%, -50%);
@@ -88,27 +82,21 @@
 }
 
 .glass-button:hover .glass-button-glow {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 
 .glass-button:hover {
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.15),
-    0 0 40px rgba(0, 255, 136, 0.15);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.12) 100%
-  );
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
 }
 
 .glass-button:active {
-  transform: translateY(-2px) scale(0.98);
+  transform: translateY(0) scale(0.98);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .glass-button-content {
@@ -128,15 +116,14 @@
 }
 
 .glass-button-text {
-  color: white;
-  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
   font-weight: 500;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   line-height: 1.4;
 }
 
-/* Ripple effect on click */
+/* Subtle ripple effect on click */
 .glass-button::after {
   content: '';
   position: absolute;
@@ -144,15 +131,15 @@
   left: 50%;
   width: 0;
   height: 0;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
   pointer-events: none;
 }
 
 .glass-button:active::after {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   opacity: 0;
 }

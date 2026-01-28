@@ -9,15 +9,20 @@ const RailroadProgress = ({ currentStep, totalSteps = 5 }) => {
         {steps.map((step, index) => {
           const isCompleted = step < currentStep;
           const isCurrent = step === currentStep;
+          const isVisible = step <= currentStep;
 
           return (
-            <div key={step} className="railroad-step">
+            <div
+              key={step}
+              className={`railroad-step ${isVisible ? 'step-visible' : 'step-hidden'}`}
+              style={{ '--step-delay': `${index * 0.1}s` }}
+            >
               {/* Connecting line (before node, except first) */}
               {index > 0 && (
                 <div
                   className={`railroad-line ${
                     isCompleted || isCurrent ? 'line-active' : ''
-                  }`}
+                  } ${isVisible ? 'line-visible' : ''}`}
                 />
               )}
 
