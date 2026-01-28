@@ -1,5 +1,50 @@
 /* ClearPath.io - Global App Styles */
 
+/* Page Transitions */
+.page-wrapper {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.page-exit-left {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+.page-exit-right {
+  transform: translateX(30px);
+  opacity: 0;
+}
+
+.page-enter-right {
+  animation: slideInFromRight 0.3s ease forwards;
+}
+
+.page-enter-left {
+  animation: slideInFromLeft 0.3s ease forwards;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Completion Page */
 .completion-page {
   min-height: 100vh;
@@ -35,17 +80,35 @@
   }
 }
 
-.completion-icon {
-  font-size: 5rem;
-  animation: bounce 1s ease-in-out infinite;
+/* Checkmark icon replacing emoji */
+.completion-checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
+  animation: checkmarkPulse 2s ease-in-out infinite;
 }
 
-@keyframes bounce {
+.completion-checkmark svg {
+  width: 40px;
+  height: 40px;
+  color: #0a1628;
+}
+
+@keyframes checkmarkPulse {
   0%, 100% {
-    transform: translateY(0);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3),
+                0 0 40px rgba(0, 255, 136, 0.2);
+    transform: scale(1);
   }
   50% {
-    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5),
+                0 0 60px rgba(0, 255, 136, 0.3);
+    transform: scale(1.05);
   }
 }
 
@@ -92,7 +155,7 @@
 }
 
 .choice-arrow {
-  color: rgba(255, 255, 255, 0.6);
+  color: #00ff88;
   font-size: 1.5rem;
 }
 
@@ -124,11 +187,13 @@
 .start-button:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.15) 100%
+    rgba(0, 255, 136, 0.2) 0%,
+    rgba(0, 255, 136, 0.1) 100%
   );
+  border-color: rgba(0, 255, 136, 0.4);
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+              0 0 30px rgba(0, 255, 136, 0.1);
 }
 
 /* Completion page background orbs */
@@ -162,7 +227,7 @@
 .completion-page .orb-2 {
   width: 300px;
   height: 300px;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
   bottom: -50px;
   left: -50px;
   animation-delay: -5s;
@@ -264,8 +329,14 @@
     font-size: 2rem;
   }
 
-  .completion-icon {
-    font-size: 4rem;
+  .completion-checkmark {
+    width: 70px;
+    height: 70px;
+  }
+
+  .completion-checkmark svg {
+    width: 35px;
+    height: 35px;
   }
 
   .choice-badge {

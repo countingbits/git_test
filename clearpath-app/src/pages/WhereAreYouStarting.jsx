@@ -8,40 +8,40 @@ const questions = [
     id: 'exerciseFrequency',
     question: 'How often do you currently exercise?',
     options: [
-      { value: 'never', label: 'Never', icon: '🌱' },
-      { value: 'rarely', label: 'Rarely', icon: '🌿' },
-      { value: '1-2x', label: '1-2x/week', icon: '🌳' },
-      { value: '3-4x', label: '3-4x/week', icon: '💪' },
-      { value: '5+', label: '5+ times', icon: '🔥' }
+      { value: 'never', label: 'Never' },
+      { value: 'rarely', label: 'Rarely' },
+      { value: '1-2x', label: '1-2x/week' },
+      { value: '3-4x', label: '3-4x/week' },
+      { value: '5+', label: '5+ times' }
     ]
   },
   {
     id: 'pushups',
     question: 'Can you do 5 push-ups right now?',
     options: [
-      { value: 'yes', label: 'Yes', icon: '💪' },
-      { value: 'no', label: 'No', icon: '🤔' },
-      { value: 'not-sure', label: 'Not sure', icon: '🤷' }
+      { value: 'yes', label: 'Yes' },
+      { value: 'no', label: 'No' },
+      { value: 'not-sure', label: 'Not sure' }
     ]
   },
   {
     id: 'walking',
     question: 'How long can you walk without stopping?',
     options: [
-      { value: '5min', label: '5 min', icon: '🚶' },
-      { value: '15min', label: '15 min', icon: '🚶‍♂️' },
-      { value: '30min', label: '30 min', icon: '🏃' },
-      { value: '1hour+', label: '1+ hour', icon: '🏃‍♂️' }
+      { value: '5min', label: '5 min' },
+      { value: '15min', label: '15 min' },
+      { value: '30min', label: '30 min' },
+      { value: '1hour+', label: '1+ hour' }
     ]
   },
   {
     id: 'liftWeights',
     question: 'Do you currently lift weights?',
     options: [
-      { value: 'never', label: 'Never tried', icon: '🆕' },
-      { value: 'used-to', label: 'Used to', icon: '📅' },
-      { value: 'sometimes', label: 'Sometimes', icon: '🏋️' },
-      { value: 'regularly', label: 'Regularly', icon: '🏋️‍♂️' }
+      { value: 'never', label: 'Never tried' },
+      { value: 'used-to', label: 'Used to' },
+      { value: 'sometimes', label: 'Sometimes' },
+      { value: 'regularly', label: 'Regularly' }
     ]
   }
 ];
@@ -109,7 +109,7 @@ const WhereAreYouStarting = ({ onComplete, onBack, initialAnswers = {} }) => {
 
   return (
     <div className="starting-page">
-      <RailroadProgress currentStep={3} completedSteps={[1, 2]} />
+      <RailroadProgress currentStep={3} totalSteps={5} />
 
       <div className="starting-content">
         <div className="starting-nav">
@@ -132,7 +132,6 @@ const WhereAreYouStarting = ({ onComplete, onBack, initialAnswers = {} }) => {
                   onClick={() => handleOptionSelect(currentQuestion.id, option.value)}
                   disabled={isAnimating}
                 >
-                  <span className="option-icon">{option.icon}</span>
                   <span className="option-label">{option.label}</span>
                   <span className="option-glow"></span>
                 </button>

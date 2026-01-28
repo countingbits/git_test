@@ -4,39 +4,27 @@ import './WhatToImprove.css';
 const improvements = [
   {
     id: 'lose-weight',
-    text: 'I need to lose weight',
-    icon: '🔥',
-    description: 'Burn fat and get leaner'
+    text: 'I need to lose weight'
   },
   {
     id: 'gain-muscle',
-    text: 'I need to gain muscle',
-    icon: '💪',
-    description: 'Build strength and mass'
+    text: 'I need to gain muscle'
   },
   {
     id: 'heart-health',
-    text: 'I need my heart to be healthy',
-    icon: '❤️',
-    description: 'Improve cardiovascular fitness'
+    text: 'I need my heart to be healthy'
   },
   {
     id: 'breathe-better',
-    text: 'I need to breathe better',
-    icon: '🌬️',
-    description: 'Enhance lung capacity and endurance'
+    text: 'I need to breathe better'
   },
   {
     id: 'flexibility',
-    text: 'I need to be more flexible',
-    icon: '🧘',
-    description: 'Improve mobility and range of motion'
+    text: 'I need to be more flexible'
   },
   {
     id: 'energy',
-    text: 'I need more energy',
-    icon: '⚡',
-    description: 'Boost daily vitality and stamina'
+    text: 'I need more energy'
   }
 ];
 
@@ -51,7 +39,6 @@ const WhatToImprove = ({ motivation, onSelect, onBack }) => {
 
         <div className="improve-header">
           <div className="motivation-badge">
-            <span>{motivation?.icon}</span>
             <span>{motivation?.text}</span>
           </div>
           <h1 className="improve-title">Let's get specific</h1>
@@ -64,7 +51,6 @@ const WhatToImprove = ({ motivation, onSelect, onBack }) => {
               key={improvement.id}
               onClick={() => onSelect(improvement)}
               delay={index * 100}
-              icon={improvement.icon}
             >
               {improvement.text}
             </GlassButton>

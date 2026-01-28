@@ -4,33 +4,27 @@ import './WhyAreYouHere.css';
 const motivations = [
   {
     id: 'tired',
-    text: "I'm tired of being sick and tired",
-    icon: '💫'
+    text: "I'm tired of being sick and tired"
   },
   {
     id: 'change',
-    text: 'I want to change my life',
-    icon: '🦋'
+    text: 'I want to change my life'
   },
   {
     id: 'stronger',
-    text: 'I want to get stronger',
-    icon: '💪'
+    text: 'I want to get stronger'
   },
   {
     id: 'look-better',
-    text: 'I want to look better',
-    icon: '✨'
+    text: 'I want to look better'
   },
   {
     id: 'feel-better',
-    text: 'I want to feel better',
-    icon: '🌟'
+    text: 'I want to feel better'
   },
   {
     id: 'healthy',
-    text: 'I want to be healthier',
-    icon: '❤️'
+    text: 'I want to be healthier'
   }
 ];
 
@@ -54,7 +48,6 @@ const WhyAreYouHere = ({ onSelect }) => {
               key={motivation.id}
               onClick={() => onSelect(motivation)}
               delay={index * 100}
-              icon={motivation.icon}
             >
               {motivation.text}
             </GlassButton>

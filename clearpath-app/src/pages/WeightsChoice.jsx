@@ -10,7 +10,7 @@ const WeightsChoice = ({ onSelect, onBack }) => {
 
   return (
     <div className="weights-page">
-      <RailroadProgress currentStep={4} completedSteps={[1, 2, 3]} />
+      <RailroadProgress currentStep={4} totalSteps={5} />
 
       <div className="weights-content">
         <div className="weights-nav">
