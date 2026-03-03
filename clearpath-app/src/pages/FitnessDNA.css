@@ -1,0 +1,382 @@
+/* ═══════════════════════════════════════════════
+   FITNESS DNA PAGE
+   ═══════════════════════════════════════════════ */
+
+.dna-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Nav ─────────────────────────────────────── */
+.dna-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 0;
+}
+
+/* ── Layout shell — three phases ─────────────── */
+.dna-layout {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  gap: 0;
+}
+
+/* INTRO: DNA centred */
+.dna-layout--intro {
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* SHIFTED: DNA moving left */
+.dna-layout--shifted {
+  justify-content: center;
+}
+
+/* QUESTIONS: DNA left, questions right */
+.dna-layout--questions {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* ── DNA visualisation wrap ──────────────────── */
+.dna-vis-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: all 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.dna-layout--intro .dna-vis-wrap {
+  width: 100%;
+  max-width: 220px;
+}
+
+.dna-layout--shifted .dna-vis-wrap {
+  width: 180px;
+  transform: translateX(-8vw);
+  opacity: 0.8;
+}
+
+.dna-layout--questions .dna-vis-wrap {
+  width: 130px;
+  flex-shrink: 0;
+  transform: none;
+  opacity: 1;
+}
+
+/* ── Intro label ─────────────────────────────── */
+.dna-intro-label {
+  text-align: center;
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.dna-intro-sub {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+
+.dna-intro-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  background: linear-gradient(135deg, #fff 30%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Strand scroll ───────────────────────────── */
+.dna-strand-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.dna-layout--intro .dna-strand-scroll    { gap: 14px; }
+.dna-layout--questions .dna-strand-scroll { gap: 8px; }
+
+/* ── Individual rung ─────────────────────────── */
+.dna-rung {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  transform: var(--rung-rot);
+  transition: transform 0.4s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Seed rungs: white/glass */
+.dna-rung--seed {
+  opacity: 0;
+  animation: rungAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--delay);
+}
+
+.dna-rung--seed .rung-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.dna-rung--seed .rung-bar {
+  height: 2px;
+  width: 48px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Answer rungs: coloured, pop in */
+.dna-rung--answer {
+  animation: rungPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.dna-rung--answer .rung-node {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dna-rung--answer .rung-bar {
+  height: 2.5px;
+  width: 50px;
+}
+
+/* ── Spine glow ──────────────────────────────── */
+.dna-spine-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 80%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 255, 136, 0.3), transparent);
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+/* ── Questions panel ─────────────────────────── */
+.dna-questions-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Progress bar */
+.dna-q-progress {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.dna-q-fill {
+  height: 100%;
+  background: #00ff88;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.dna-q-counter {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Question body — re-mounts on each question to re-animate */
+.dna-q-body {
+  animation: fadeUp 0.35s ease-out both;
+}
+
+.dna-q-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+  margin: 0 0 20px;
+}
+
+/* ── Option buttons ──────────────────────────── */
+.dna-q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dna-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+  opacity: 0;
+  animation: fadeUp 0.3s ease-out forwards;
+  animation-delay: var(--opt-delay);
+}
+
+.dna-opt:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--opt-color, rgba(255, 255, 255, 0.2));
+  transform: translateX(3px);
+}
+
+.dna-opt:active {
+  transform: translateX(3px) scale(0.98);
+}
+
+.dna-opt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--opt-color, rgba(255,255,255,0.3));
+}
+
+.dna-opt-label {
+  flex: 1;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dna-opt-arrow {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dna-opt:hover .dna-opt-arrow {
+  color: var(--opt-color, rgba(255, 255, 255, 0.6));
+  transform: translateX(2px);
+}
+
+/* ── Background orbs ─────────────────────────── */
+.dna-page .background-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dna-page .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: floatOrb 22s ease-in-out infinite;
+}
+
+.dna-page .orb-1 {
+  width: 340px; height: 340px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  top: -80px; right: -60px;
+  animation-delay: 0s;
+}
+
+.dna-page .orb-2 {
+  width: 260px; height: 260px;
+  background: linear-gradient(135deg, #00ff88, #00b4d8);
+  bottom: 5%; left: -80px;
+  animation-delay: -8s;
+}
+
+.dna-page .orb-3 {
+  width: 180px; height: 180px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  top: 45%; right: -40px;
+  animation-delay: -15s;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%       { transform: translate(15px, -25px) scale(1.04); }
+  50%       { transform: translate(-12px, 18px) scale(0.96); }
+  75%       { transform: translate(-20px, -12px) scale(1.02); }
+}
+
+/* ── Keyframes ───────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes rungAppear {
+  from { opacity: 0; transform: var(--rung-rot) scaleX(0); }
+  to   { opacity: 1; transform: var(--rung-rot) scaleX(1); }
+}
+
+@keyframes rungPop {
+  0%   { opacity: 0; transform: var(--rung-rot) scale(0.5); }
+  60%  { opacity: 1; transform: var(--rung-rot) scale(1.15); }
+  100% { opacity: 1; transform: var(--rung-rot) scale(1); }
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 480px) {
+  .dna-layout--questions {
+    gap: 12px;
+  }
+
+  .dna-layout--questions .dna-vis-wrap {
+    width: 90px;
+  }
+
+  .dna-rung--seed .rung-bar,
+  .dna-rung--answer .rung-bar {
+    width: 36px;
+  }
+
+  .dna-q-title {
+    font-size: 1.1rem;
+  }
+
+  .dna-opt {
+    padding: 12px 14px;
+  }
+
+  .dna-intro-title {
+    font-size: 1.9rem;
+  }
+}

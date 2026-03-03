@@ -59,36 +59,14 @@
   }
 }
 
-/* Checkmark icon replacing emoji */
-.completion-checkmark {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
-  animation: checkmarkPulse 2s ease-in-out infinite;
+/* ClearPath logo on completion */
+.completion-logo {
+  animation: logoBreathe 3s ease-in-out infinite;
 }
 
-.completion-checkmark svg {
-  width: 40px;
-  height: 40px;
-  color: #0a1628;
-}
-
-@keyframes checkmarkPulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3),
-                0 0 40px rgba(0, 255, 136, 0.2);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5),
-                0 0 60px rgba(0, 255, 136, 0.3);
-    transform: scale(1.05);
-  }
+@keyframes logoBreathe {
+  0%, 100% { filter: drop-shadow(0 0 18px rgba(0, 255, 136, 0.3)); transform: scale(1); }
+  50%       { filter: drop-shadow(0 0 32px rgba(0, 255, 136, 0.55)); transform: scale(1.04); }
 }
 
 .completion-content h1 {
@@ -306,16 +284,6 @@
 @media (max-width: 480px) {
   .completion-content h1 {
     font-size: 2rem;
-  }
-
-  .completion-checkmark {
-    width: 70px;
-    height: 70px;
-  }
-
-  .completion-checkmark svg {
-    width: 35px;
-    height: 35px;
   }
 
   .choice-badge {
